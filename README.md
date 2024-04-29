@@ -41,20 +41,20 @@ python -m src.ocr_extraction.main consensus
 
 ## Output
 
-The final output will be a JSON file located in `data/final_results.json` with the following structure:
+The final output will be a JSON file located in `data/ocr_results.json` with the following structure:
 
 ```json
 [
-{
-"image_name": "image1.jpg",
-"text": "Extracted text content."
-},
-...
+    {
+    "image_name": "image1.jpg",
+    "text": "Extracted text content."
+    },
+    ...
 ]
 ```
 
-## Challenges faced
+## Issues Encountered during the extraction process
 
-- installing Tesseract separately on my mac was a challenge as it required XCode as well
-- Researching on consensus-based approaches
-
+- Installing Tesseract separately on my mac was a challenge as it required XCode and some additional dependencies.
+- Researched on consensus-based approaches was interesting. Ended up choosing Levenshtein distance algorithm to calculate similarity between the strings and it worked out very well.
+- Initialising the extractors for trOCR and EasyOCR took some time to initialise. I was happy with the design decision to run each extraction pipeline independently that produced it's own JSON output. Decoupling the extractors from the consensus pipeline made things a lot simpler.
