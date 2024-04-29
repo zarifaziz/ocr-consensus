@@ -1,7 +1,5 @@
 import json
 import Levenshtein
-from .extractors import EasyOCRExtractor, PyTesseractExtractor, TrOCRExtractor
-from .ocr_pipeline import OCRPipeline
 
 class ConsensusPipeline:
     """Pipeline to run OCR extractors and determine the most accurate text using consensus."""
@@ -10,11 +8,6 @@ class ConsensusPipeline:
         """Initialize the consensus pipeline with directory paths."""
         self.input_dir = input_dir
         self.output_dir = output_dir
-        self.extractors = {
-            'easyocr': EasyOCRExtractor(),
-            'pytesseract': PyTesseractExtractor(),
-            'trocr': TrOCRExtractor()
-        }
 
     def read_results(self, extractor_name):
         """Read the results from a JSON file for a given extractor."""
@@ -39,9 +32,9 @@ class ConsensusPipeline:
     def run(self):
         """Run the consensus algorithm on the extractor outputs."""
         # Read the results from the JSON files
-        easyocr_results = self.read_results('easyocrextractor_results')
-        pytesseract_results = self.read_results('pytesseractextractor_results')
-        trocr_results = self.read_results('trocrextractor_results')
+        easyocr_results = self.read_results('easyocrextractor')
+        pytesseract_results = self.read_results('pytesseractextractor')
+        trocr_results = self.read_results('trocrextractor')
 
         # Ensure the results are in the same order and have the same image names
         assert len(easyocr_results) == len(pytesseract_results) == len(trocr_results), "Results length mismatch"
