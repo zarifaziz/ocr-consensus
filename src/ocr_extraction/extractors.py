@@ -55,7 +55,7 @@ class TrOCRExtractor(ExtractionProtocol):
         return text
 
 
-class EasyOCR(ExtractionProtocol):
+class EasyOCRExtractor(ExtractionProtocol):
     """Implements the ExtractionProtocol using EasyOCR to extract text from images."""
 
     def __init__(self, *args, **kwargs):

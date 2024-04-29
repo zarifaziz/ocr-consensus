@@ -47,3 +47,9 @@ The final output will be a JSON file located in `data/final_results.json` with t
 ...
 ]
 ```
+
+## Challenges faced
+
+- installing Tesseract separately on my mac was a challenge as it required XCode as well
+- Researching on consensus-based approaches
+

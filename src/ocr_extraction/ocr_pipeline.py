@@ -6,6 +6,7 @@ from loguru import logger
 
 from .extractors import ExtractionProtocol
 
+from tqdm import tqdm
 
 class OCRPipeline:
     """Pipeline to run an OCR extractor over all images in a directory and save the results."""
@@ -19,12 +20,11 @@ class OCRPipeline:
     def process_images(self) -> List[Dict[str, str]]:
         """Process all images in the input directory with the extractor."""
         results = []
-        for image_name in os.listdir(self.input_dir):
-            if image_name.lower().endswith(".jpg"):
-                image_path = os.path.join(self.input_dir, image_name)
-                logger.info("Processing image: {}", image_path)
-                text = self.extractor.extract(image_path)
-                results.append({"image_name": image_name, "text": text})
+        image_files = [f for f in os.listdir(self.input_dir) if f.lower().endswith(".jpg")]
+        for image_name in tqdm(image_files, desc="Processing images"):
+            image_path = os.path.join(self.input_dir, image_name)
+            text = self.extractor.extract(image_path)
+            results.append({"image_name": image_name, "text": text})
         logger.info("Processed {} images", len(results))
         return results
 
