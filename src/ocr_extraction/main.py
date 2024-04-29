@@ -1,5 +1,6 @@
 import typer
 
+from .consensus import ConsensusPipeline
 from .extractors import EasyOCRExtractor, PyTesseractExtractor, TrOCRExtractor
 from .ocr_pipeline import OCRPipeline
 
@@ -29,6 +30,11 @@ def trocr():
     pipeline = OCRPipeline(extractor, "data/selected_images", "data")
     pipeline.run()
 
+@app.command()
+def consensus():
+    """Run the OCR consensus pipeline."""
+    pipeline = ConsensusPipeline("data/selected_images", "data")
+    pipeline.run()
 
 if __name__ == "__main__":
     app()
