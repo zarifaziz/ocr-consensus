@@ -1,6 +1,6 @@
 import typer
 
-from .consensus import ConsensusPipeline
+from .consensus_pipeline import ConsensusPipeline
 from .extractors import EasyOCRExtractor, PyTesseractExtractor, TrOCRExtractor
 from .ocr_pipeline import OCRPipeline
 

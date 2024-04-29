@@ -6,7 +6,7 @@ This repository contains the codebase for the OCR Extraction Challenge, where th
 
 ## Features
 
-- Text extraction using EasyOCR, PyTesseract, and TrOCR.
+- 3 independent text extraction pipelines using EasyOCR, PyTesseract, and TrOCR. 
 - Analysis of OCR results to resolve discrepancies.
 - Consensus-based approach for determining the most accurate text.
 - JSON output of the final, correct text for each image.
@@ -32,6 +32,11 @@ To run the OCR pipeline:
 python -m src.ocr_extraction.main pytesseract
 python -m src.ocr_extraction.main easyocr
 python -m src.ocr_extraction.main trocr
+```
+
+Run the consensus pipeline to generate the final JSON
+```
+python -m src.ocr_extraction.main consensus
 ```
 
 ## Output
