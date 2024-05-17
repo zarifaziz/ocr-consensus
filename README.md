@@ -2,13 +2,13 @@
 
 ## Overview
 
-This repository hosts an open-source OCR text extraction tool that utilizes three different OCR technologies: EasyOCR, PyTesseract, and TrOCR. It is designed to extract text from images, analyze the results for discrepancies, and use a consensus algorithm to determine the most accurate text extraction, which is then stored in a JSON file.
+This repository hosts an open-source OCR text extraction tool that utilizes three different OCR technologies: EasyOCR, PyTesseract, and TrOCR. It is designed to extract text from images, analyze the results for discrepancies, and use the Levenshtein distance as the consensus algorithm to determine the most accurate text extraction, which is then stored in a JSON file.
 
 ## Features
 
 - Three independent text extraction pipelines using EasyOCR, PyTesseract, and TrOCR.
 - Analysis of OCR results to identify and resolve discrepancies.
-- Consensus-based approach for determining the most accurate text extraction.
+- Consensus-based approach using Levenshtein distance for determining the most accurate text extraction.
 - JSON output of the final, correct text for each image.
 
 ## Requirements
